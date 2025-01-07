@@ -32,7 +32,7 @@
       "name": "pokeapi",
       "urls": ["https://pokeapi.co/api/v2/**"],
       "cacheConfig": {
-        "strategy": "networkFirst",
+        "strategy": "performance",
         "maxSize": 50,
         "maxAge": "1d"
       }
