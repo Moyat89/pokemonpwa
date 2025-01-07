@@ -1,0 +1,31 @@
+table {
+    width: 30vw;
+
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+}
+
+.image,
+.name {
+    text-transform: capitalize;
+    margin: auto;
+}
+
+td,
+th {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+td {
+    cursor: pointer;
+
+}
+
+.row:hover {
+    background-color: indigo;
+    color: white;
+}

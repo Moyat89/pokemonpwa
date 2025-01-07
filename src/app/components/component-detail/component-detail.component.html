@@ -1,0 +1,40 @@
+<div class="detail-container">
+    <button mat-raised-button color="primary" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+        Back
+    </button>
+    <h1>{{ pokemonDetails?.name }}</h1>
+    <img [src]="pokemonDetails?.sprites?.other['official-artwork'].front_default" alt="{{ pokemonDetails?.name }}" />
+
+    <button mat-raised-button color="accent" (click)="toggleDetails()">
+        {{ showAllDetails ? 'Hide Details' : 'Show All Details' }}
+    </button>
+
+    <div class="details-panel" *ngIf="showAllDetails">
+        <mat-expansion-panel *ngIf="showAllDetails">
+            <mat-expansion-panel-header>
+                <mat-panel-title> <strong>Dimensions</strong> </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p><strong>Height:</strong> {{ pokemonDetails?.height }}</p>
+            <p><strong>Weight:</strong> {{ pokemonDetails?.weight }}</p>
+        </mat-expansion-panel>
+        <div class="progress-container">
+            <strong>Base Experience:</strong>
+            <mat-progress-bar mode="determinate" [value]="pokemonDetails?.base_experience"
+                aria-label="Base Experience Progress"></mat-progress-bar>
+            <span>{{ pokemonDetails?.base_experience }}</span>
+        </div>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> <strong>Abilities </strong></mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul>
+                <li *ngFor="let ability of pokemonDetails.abilities">
+                    {{ ability.ability.name }}
+                </li>
+            </ul>
+        </mat-expansion-panel>
+
+    </div>
+
+</div>

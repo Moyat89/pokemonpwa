@@ -1,0 +1,7 @@
+<div class="card-container">
+    <mat-card *ngFor="let pokemon of pokemonList" class="pokemon-card" (click)="goToDetails(pokemon)">
+      <img mat-card-avatar [src]="pokemon.image" alt="{{ pokemon.name }}" />
+      <mat-card-title class="name">{{ pokemon.name }}</mat-card-title>
+    </mat-card>
+  </div>
+  
