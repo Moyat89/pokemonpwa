@@ -1,17 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
+import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-component-list',
   standalone: false,
   templateUrl: './component-list.component.html',
-  styleUrl: './component-list.component.scss'
+  styleUrl: './component-list.component.scss',
+  animations: [
+    trigger('listAnimation', [
+      transition(':enter', [
+        query('.list-item', [
+          style({ opacity: 0, transform: 'translateY(20px)' }),
+          stagger(100, [
+            animate(
+              '500ms ease-out',
+              style({ opacity: 1, transform: 'translateY(0)' })
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
+  ],
 })
 export class ComponentListComponent implements OnInit {
 
   pokemonList: any[] = [];
   isLoading = true;
-  viewMode: 'grid' | 'list' = 'grid'; // Vista predeterminada
+  viewMode: 'card' | 'table' = 'card'; 
 
   constructor(private pokemonService: PokemonService) {}
 
@@ -30,7 +46,7 @@ export class ComponentListComponent implements OnInit {
     });
   }
 
-  changeView(mode: 'grid' | 'list'): void {
+  changeView(mode: 'card' | 'table'): void {
     this.viewMode = mode;
   }
 }

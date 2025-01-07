@@ -1,29 +1,20 @@
 <div class="container">
     <div class="view-toggle">
-      <button
-        mat-icon-button
-        [color]="viewMode === 'grid' ? 'primary' : ''"
-        (click)="changeView('grid')"
-      >
-        <mat-icon>grid_view</mat-icon>
-      </button>
-      <button
-        mat-icon-button
-        [color]="viewMode === 'list' ? 'primary' : ''"
-        (click)="changeView('list')"
-      >
-        <mat-icon>list</mat-icon>
-      </button>
+        <button mat-icon-button [color]="viewMode === 'card' ? 'primary' : ''" (click)="changeView('card')">
+            <mat-icon>grid_view</mat-icon>
+        </button>
+        <button mat-icon-button [color]="viewMode === 'table' ? 'primary' : ''" (click)="changeView('table')">
+            <mat-icon>list</mat-icon>
+        </button>
     </div>
-  
+
     <mat-progress-spinner *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
-  
-    <div class="grid-view" *ngIf="viewMode === 'grid' && !isLoading">
-      <app-card [pokemonList]="pokemonList"></app-card>
+
+    <div class="card-view" *ngIf="viewMode === 'card' && !isLoading " [@listAnimation]>
+        <app-card [pokemonList]="pokemonList"></app-card>
     </div>
-  
-    <div class="list-view" *ngIf="viewMode === 'list' && !isLoading">
-      <app-grid [pokemonList]="pokemonList"></app-grid>
+
+    <div class="table-view" *ngIf="viewMode === 'table' && !isLoading" [@listAnimation]>
+        <app-grid [pokemonList]="pokemonList"></app-grid>
     </div>
-  </div>
-  
+</div>
