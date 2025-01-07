@@ -11,10 +11,10 @@ import { animate, query, stagger, style, transition, trigger } from '@angular/an
     trigger('listAnimation', [
       transition(':enter', [
         query('.pokemon-card, .row', [
-          style({ opacity: 0, transform: 'translateY(20px)' }),
+          style({ opacity: 0, transform: 'translateY(40px)' }),
           stagger(100, [
             animate(
-              '500ms ease-out',
+              '500ms ease-in',
               style({ opacity: 1, transform: 'translateY(0)' })
             ),
           ]),
