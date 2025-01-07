@@ -10,11 +10,15 @@
 
     <mat-progress-spinner *ngIf="isLoading" mode="indeterminate"></mat-progress-spinner>
 
-    <div class="card-view" *ngIf="viewMode === 'card' && !isLoading " [@listAnimation]>
-        <app-card [pokemonList]="pokemonList"></app-card>
+    <div class="card-view" *ngIf="viewMode === 'card' && !isLoading" [@listAnimation]>
+        <div *ngFor="let pokemon of pokemonList" class="list-item">
+            <app-card [pokemonList]="[pokemon]"></app-card>
+        </div>
     </div>
 
     <div class="table-view" *ngIf="viewMode === 'table' && !isLoading" [@listAnimation]>
-        <app-grid [pokemonList]="pokemonList"></app-grid>
+        <div *ngFor="let pokemon of pokemonList" class="list-item">
+            <app-grid [pokemonList]="[pokemon]"></app-grid>
+        </div>
     </div>
 </div>
